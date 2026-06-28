@@ -442,7 +442,6 @@ function renderRecordSummary(record = commuteRecord) {
   const arrivalTime = record.arrivalPressedTime || "--:--";
   const duration = durationMinutes(record.departPressedAt, record.arrivalPressedAt);
   const wait = waitMinutes(record);
-  const transferTime = summary.fromTime === "--:--" ? "--:--" : summary.fromTime;
   const recordLabel = record.dateLabel || formatDateLabel(new Date(record.departPressedAt || Date.now()));
 
   document.getElementById("recordTitle").textContent = record.dateKey === todayKey ? "今日のサマリー" : `${recordLabel}のサマリー`;
@@ -450,8 +449,7 @@ function renderRecordSummary(record = commuteRecord) {
     summaryCard("building", record.departPressedTime, "出発"),
     summaryCard("train", summary.startTime, summary.start),
     summaryCard("train", summary.midTime, summary.mid),
-    summaryCard("frog", "乗換", summary.routeLabel),
-    summaryCard("train", transferTime, summary.from),
+    summaryCard("frog", summary.wait, "乗換"),
     summaryCard("train", summary.toTime, summary.to),
     summaryCard("building", arrivalTime, "会社到着")
   ].join("");
