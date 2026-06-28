@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+  <meta name="theme-color" content="#b9dcff">
+  <title>NORIKAERU</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="standby-mode">
+  <div id="splash">
+    <img src="assets/kerry.png" class="splash-frog" alt="">
+    <div class="brand">NORIKAERU</div>
+    <div class="subbrand">Transit Buddy</div>
+    <div class="ymg">YMG.apps</div>
+  </div>
+
+  <header class="topbar">
+    <div class="header-line">
+      <button class="icon-only" type="button" data-toast="履歴画面は次フェーズ">
+        <img src="assets/history.png" alt="履歴">
+      </button>
+      <div class="app-title">NORIKAERU</div>
+      <button class="icon-only" type="button" data-toast="設定画面は次フェーズ">
+        <img src="assets/settings.png" alt="設定">
+      </button>
+    </div>
+    <div class="time-wrap">
+      <div class="time live" id="timeText">07:42</div>
+    </div>
+  </header>
+
+  <main class="app">
+    <div class="next-nav">
+      <span class="next-track" id="nextTrack">おはようございます。今日も元気に出発しましょう。</span>
+    </div>
+
+    <section id="standbyView" class="standby">
+      <img src="assets/kerry.png" class="standby-frog" alt="">
+      <div class="standby-caption">さあ、出発しましょう</div>
+    </section>
+
+    <section id="homeView" class="hidden">
+      <div id="routeList"></div>
+    </section>
+
+    <section id="arrivalWaitView" class="arrival-wait hidden">
+      <img src="assets/kerry.png" class="wait-frog" alt="">
+      <div class="route-memo">ROUTE MEMO</div>
+      <div class="card wait-card">
+        <div class="wait-timeline">
+          <div class="wait-row">
+            <span class="wait-icon"><img src="assets/train.png" alt=""></span>
+            <span class="wait-time" id="waitFromTime">07:55発</span>
+            <span class="wait-station" id="waitFrom">動物園前</span>
+          </div>
+          <div class="wait-row">
+            <span class="wait-icon"><img src="assets/train.png" alt=""></span>
+            <span class="wait-time" id="waitToTime">08:18着</span>
+            <span class="wait-station" id="waitTo">淡路</span>
+          </div>
+          <div class="wait-row">
+            <span class="wait-icon"><img src="assets/building.png" alt=""></span>
+            <span class="wait-time" id="officeTime">08:35</span>
+            <span class="wait-station">会社到着</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="recordView" class="hidden record-view">
+      <h1 class="record-title">今日の記録</h1>
+      <div class="record-summary">通勤記録を保存しました</div>
+    </section>
+  </main>
+
+  <div class="action-dock" id="actionDock">
+    <div class="mode-dock">
+      <button class="active" type="button">出勤</button>
+      <button type="button">退勤</button>
+    </div>
+    <button id="mainAction" class="big-action" type="button">出発</button>
+  </div>
+
+  <div id="toast"></div>
+  <script src="js/app.js"></script>
+</body>
+</html>
