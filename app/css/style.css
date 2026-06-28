@@ -277,8 +277,13 @@ button { font: inherit; }
   display: flex;
   align-items: center;
   gap: 10px;
+  width: 100%;
   min-height: 62px;
   padding: 0 17px;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  text-align: left;
   cursor: pointer;
   z-index: 2;
 }

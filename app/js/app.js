@@ -53,7 +53,7 @@ function setNext(text, forceMarquee = false) {
   const box = document.querySelector(".next-nav");
   nextTrack.classList.remove("marquee");
   nextTrack.style.removeProperty("--shift");
-  nextTrack.textContent = text;
+  nextTrack.textContent = text.startsWith("🐸") ? text : `🐸 ${text}`;
 
   requestAnimationFrame(() => {
     const overflow = Math.max(0, nextTrack.scrollWidth - (box.clientWidth - 28));
@@ -110,7 +110,7 @@ function startCommute() {
   keptTrain = null;
   document.body.classList.remove("standby-mode");
   show("homeView");
-  setNext("乗換ルートを選びましょう。ノリカエ、ノリカエ。");
+  setNext("乗換ルートをタップ！ﾉﾘｶｴ♪ﾉﾘｶｴ♫");
   setAction("乗換完了", true);
   renderRoutes();
   toast("ルートを表示しました");
@@ -172,7 +172,7 @@ function goArrivalWait() {
 
   state = "arrivalWait";
   show("arrivalWaitView");
-  setNext("会社に着いたら「到着」を押しましょう。今日もおつかれさまです。", true);
+  setNext("会社に着いたら「到着」をタップ！今日も良いﾉﾘｶｴ♪ﾀﾞｯﾀﾖ ♫", true);
   setAction("到着");
   toast("乗換完了");
 }
@@ -180,7 +180,7 @@ function goArrivalWait() {
 function arriveOffice() {
   state = "record";
   show("recordView");
-  setNext("お疲れ様でした。今日の記録を保存しました。");
+  setNext("お疲れ様でした！");
   setAction("ホームへ戻る");
   toast("今日の記録へ");
 }
