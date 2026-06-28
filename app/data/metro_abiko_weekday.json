@@ -1,0 +1,521 @@
+{
+  "schemaVersion": 1,
+  "service": "weekday_morning_commute",
+  "source": {
+    "name": "Osaka Metro official timetable",
+    "url": "https://kensaku.osakametro.co.jp/timetable/ja/sp/subway/dia/station/25806/1019/2/#weekday",
+    "retrievedAt": "2026-06-28T09:19:47.528Z",
+    "note": "Osaka Metro official timetable page shows 2025-10-14 as current date."
+  },
+  "station": {
+    "id": "M27",
+    "name": "あびこ",
+    "line": "御堂筋線"
+  },
+  "direction": "箕面萱野方面",
+  "timeRange": {
+    "from": "05:00",
+    "to": "10:59"
+  },
+  "legend": {
+    "": "箕面萱野",
+    "新": "新大阪",
+    "天": "天王寺",
+    "江": "江坂",
+    "中": "中津"
+  },
+  "trains": [
+    {
+      "time": "05:03",
+      "destination": "江坂",
+      "mark": "江",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "05:13",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "05:23",
+      "destination": "江坂",
+      "mark": "江",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "05:33",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "05:43",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "05:52",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "06:01",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "06:06",
+      "destination": "新大阪",
+      "mark": "新",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "06:10",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "06:14",
+      "destination": "新大阪",
+      "mark": "新",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "06:18",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "06:22",
+      "destination": "新大阪",
+      "mark": "新",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "06:26",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "06:30",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "06:34",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "06:38",
+      "destination": "新大阪",
+      "mark": "新",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "06:43",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "06:46",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "06:48",
+      "destination": "新大阪",
+      "mark": "新",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "06:51",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "06:53",
+      "destination": "中津",
+      "mark": "中",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "06:55",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "06:57",
+      "destination": "新大阪",
+      "mark": "新",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "07:00",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "07:04",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "07:06",
+      "destination": "新大阪",
+      "mark": "新",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "07:09",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "07:13",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "07:15",
+      "destination": "新大阪",
+      "mark": "新",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "07:18",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "07:22",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "07:24",
+      "destination": "新大阪",
+      "mark": "新",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "07:27",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "07:31",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "07:33",
+      "destination": "新大阪",
+      "mark": "新",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "07:36",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "07:40",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "07:42",
+      "destination": "新大阪",
+      "mark": "新",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "07:45",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "07:47",
+      "destination": "中津",
+      "mark": "中",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "07:49",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "07:54",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "07:56",
+      "destination": "中津",
+      "mark": "中",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "07:58",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "08:03",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "08:05",
+      "destination": "中津",
+      "mark": "中",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "08:07",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "08:12",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "08:14",
+      "destination": "中津",
+      "mark": "中",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "08:16",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "08:21",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "08:23",
+      "destination": "中津",
+      "mark": "中",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "08:25",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "08:30",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "08:32",
+      "destination": "中津",
+      "mark": "中",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "08:34",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "08:39",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "08:41",
+      "destination": "中津",
+      "mark": "中",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "08:43",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "08:48",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "08:51",
+      "destination": "中津",
+      "mark": "中",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "08:53",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "09:01",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "09:06",
+      "destination": "中津",
+      "mark": "中",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "09:10",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "09:17",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "09:22",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "09:27",
+      "destination": "中津",
+      "mark": "中",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "09:32",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "09:40",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "09:45",
+      "destination": "新大阪",
+      "mark": "新",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "09:49",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "09:56",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "10:04",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "10:11",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "10:19",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "10:23",
+      "destination": "新大阪",
+      "mark": "新",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "10:27",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "10:35",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "10:43",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "10:51",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    },
+    {
+      "time": "10:59",
+      "destination": "箕面萱野",
+      "mark": "",
+      "direction": "箕面萱野方面"
+    }
+  ]
+}
