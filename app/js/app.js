@@ -74,9 +74,10 @@ function renderRoutes() {
   routeList.innerHTML = trains.map((train, index) => {
     return `
       <section class="card route-card ${keptTrain === index ? "kept open" : ""}">
-        <button class="head" type="button" data-toggle-route>
+        <div class="head" role="button" tabindex="0" data-toggle-route>
           <div class="main">${trainIcon()}<span>${train.start}</span><span class="depart">${train.st}発</span></div>
-        </button>
+          ${keptTrain === index ? '<button class="change-route" type="button" data-change-route>変更</button>' : ""}
+        </div>
         <div class="detail">
           <div class="inner">
             <div class="arrival">${trainIcon()}<span>${train.mid}</span><span>${train.arr}着</span></div>
@@ -119,6 +120,15 @@ function startCommute() {
 function toggleCard(button) {
   if (keptTrain !== null) return;
   button.closest(".route-card").classList.toggle("open");
+}
+
+function changeRoute() {
+  keptTrain = null;
+  selected = null;
+  renderRoutes();
+  setNext("乗換ルートをタップ！ﾉﾘｶｴ♪ﾉﾘｶｴ♫");
+  setAction("乗換完了", true);
+  toast("ルートを選び直せます");
 }
 
 function selectBranch(trainIndex, routeIndex) {
@@ -217,6 +227,13 @@ document.addEventListener("click", (event) => {
   const toastButton = event.target.closest("[data-toast]");
   if (toastButton) toast(toastButton.dataset.toast);
 
+  const changeButton = event.target.closest("[data-change-route]");
+  if (changeButton) {
+    event.stopPropagation();
+    changeRoute();
+    return;
+  }
+
   const toggleButton = event.target.closest("[data-toggle-route]");
   if (toggleButton) toggleCard(toggleButton);
 
@@ -228,6 +245,17 @@ document.addEventListener("click", (event) => {
 
   const otherButton = event.target.closest("[data-select-other]");
   if (otherButton) selectOther(Number(otherButton.dataset.selectOther));
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key !== "Enter" && event.key !== " ") return;
+  if (event.target.closest("[data-change-route]")) return;
+
+  const toggleButton = event.target.closest("[data-toggle-route]");
+  if (!toggleButton) return;
+
+  event.preventDefault();
+  toggleCard(toggleButton);
 });
 
 mainActionButton.addEventListener("click", mainAction);

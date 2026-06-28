@@ -288,6 +288,25 @@ button { font: inherit; }
   z-index: 2;
 }
 
+.change-route {
+  flex: none;
+  min-width: 54px;
+  height: 34px;
+  border: 1px solid rgba(17, 19, 24, .12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .76);
+  color: rgba(17, 19, 24, .74);
+  font-size: 14px;
+  font-weight: 850;
+  letter-spacing: .02em;
+  box-shadow: 0 8px 20px rgba(48, 90, 130, .08);
+  cursor: pointer;
+}
+
+.change-route:active {
+  transform: translateY(1px);
+}
+
 .route-icon,
 .mini-icon,
 .wait-icon {
