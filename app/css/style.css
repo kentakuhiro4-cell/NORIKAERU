@@ -345,6 +345,7 @@ button { font: inherit; }
   display: flex;
   align-items: center;
   gap: 9px;
+  margin-left: 3px;
   min-height: 62px;
   font-size: 22px;
   font-weight: 820;
