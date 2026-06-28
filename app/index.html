@@ -17,7 +17,7 @@
 
   <header class="topbar">
     <div class="header-line">
-      <button class="icon-only" type="button" data-toast="履歴画面は次フェーズ">
+      <button class="icon-only" type="button" data-open-history aria-label="履歴を開く">
         <img src="assets/history.png" alt="履歴">
       </button>
       <div class="app-title">NORIKAERU</div>
@@ -26,10 +26,7 @@
       </button>
     </div>
     <div class="time-wrap">
-      <button class="time-button" id="timeButton" type="button" aria-label="出発時刻を変更">
-        <span class="time live" id="timeText">07:42</span>
-      </button>
-      <input class="time-input" id="timeInput" type="time" value="07:42" min="05:00" max="10:59" step="60" aria-label="出発時刻">
+      <div class="time live" id="timeText">--:--</div>
     </div>
   </header>
 
@@ -72,20 +69,42 @@
     </section>
 
     <section id="recordView" class="hidden record-view">
-      <h1 class="record-title">今日のサマリー</h1>
+      <div class="record-brand">NORIKAERU</div>
+      <h1 class="record-title" id="recordTitle">今日のサマリー</h1>
       <div class="record-summary" id="recordSummary">
-        <div class="summary-row">
-          <span>出発検索</span>
-          <strong id="summaryTargetTime">07:42</strong>
+        <div id="summaryCards" class="summary-cards"></div>
+        <div class="summary-metrics">
+          <div>
+            <span>所要時間</span>
+            <strong id="summaryDuration">--分</strong>
+          </div>
+          <div>
+            <span>乗換待ち</span>
+            <strong id="summaryWait">--分</strong>
+          </div>
         </div>
-        <div class="summary-route">
-          <div><span id="summaryStartTime">07:42発</span> <strong id="summaryStart">あびこ</strong></div>
-          <div><span id="summaryMidTime">07:54着</span> <strong id="summaryMid">動物園前</strong></div>
-          <div><span id="summaryTransferTime">07:55発</span> <strong id="summaryTransfer">動物園前</strong></div>
-          <div><span id="summaryArrivalTime">08:35</span> <strong>会社到着（予定）</strong></div>
-        </div>
-        <div class="summary-choice" id="summaryChoice">乗換 A</div>
+        <div class="summary-choice" id="summaryChoice">乗換 --</div>
       </div>
+    </section>
+
+    <section id="historyView" class="hidden history-view">
+      <h1 class="record-title">履歴</h1>
+      <div class="history-stats">
+        <div>
+          <span>乗換成功率</span>
+          <strong id="historySuccessRate">--%</strong>
+        </div>
+        <div>
+          <span>累計成功数</span>
+          <strong id="historySuccessCount">--回</strong>
+        </div>
+      </div>
+      <div class="history-tabs" aria-label="履歴種別">
+        <button class="active" type="button">出勤</button>
+        <button type="button" disabled>退勤</button>
+      </div>
+      <div class="history-list" id="historyList"></div>
+      <p class="history-note">タップすると、その日の詳細記録を表示します</p>
     </section>
   </main>
 

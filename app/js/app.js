@@ -32,24 +32,97 @@ const fallbackTrains = [
 ];
 
 const routeEngine = window.NORIKAERU_ROUTE_ENGINE;
-let currentTime = "07:42";
-let trains = loadTrainsForTime(currentTime);
+const HISTORY_KEY = "norikaeruCommuteHistoryV1";
+let currentTime = formatClock(new Date());
+let routeSearchTime = currentTime;
+let trains = loadTrainsForTime(routeSearchTime);
 
 let selected = null;
 let state = "standby";
 let keptTrain = null;
+let commuteRecord = null;
 
-const views = ["standbyView", "homeView", "arrivalWaitView", "recordView"];
+const views = ["standbyView", "homeView", "arrivalWaitView", "recordView", "historyView"];
 const routeList = document.getElementById("routeList");
 const nextTrack = document.getElementById("nextTrack");
 const mainActionButton = document.getElementById("mainAction");
 const timeText = document.getElementById("timeText");
-const timeButton = document.getElementById("timeButton");
-const timeInput = document.getElementById("timeInput");
 
 function loadTrainsForTime(time) {
   const routeTrains = routeEngine ? routeEngine.getMorningRoutes(time, 3) : [];
   return routeTrains.length ? routeTrains : fallbackTrains;
+}
+
+function pad(value) {
+  return String(value).padStart(2, "0");
+}
+
+function formatClock(date) {
+  return `${pad(date.getHours())}:${pad(date.getMinutes())}`;
+}
+
+function formatDateKey(date) {
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+}
+
+function formatDateLabel(date) {
+  const weekdays = ["日", "月", "火", "水", "木", "金", "土"];
+  return `${pad(date.getMonth() + 1)}/${pad(date.getDate())}（${weekdays[date.getDay()]}）`;
+}
+
+function durationMinutes(startIso, endIso) {
+  if (!startIso || !endIso) return null;
+  const diff = new Date(endIso).getTime() - new Date(startIso).getTime();
+  if (!Number.isFinite(diff) || diff < 0) return null;
+  return Math.max(0, Math.round(diff / 60000));
+}
+
+function waitMinutes(record) {
+  const wait = record && record.selected && record.selected.wait;
+  const value = parseInt(wait, 10);
+  return Number.isFinite(value) ? value : null;
+}
+
+function readHistory() {
+  try {
+    const records = JSON.parse(localStorage.getItem(HISTORY_KEY) || "[]");
+    return Array.isArray(records) ? records : [];
+  } catch {
+    return [];
+  }
+}
+
+function writeHistory(records) {
+  try {
+    localStorage.setItem(HISTORY_KEY, JSON.stringify(records.slice(0, 40)));
+  } catch {
+    toast("履歴の保存に失敗しました");
+  }
+}
+
+function saveRecord(record) {
+  const records = readHistory().filter((item) => item.id !== record.id);
+  writeHistory([record, ...records]);
+}
+
+function updateClock() {
+  currentTime = formatClock(new Date());
+  timeText.textContent = currentTime;
+}
+
+function createCommuteRecord(startedAt) {
+  return {
+    id: String(startedAt.getTime()),
+    mode: "出勤",
+    dateKey: formatDateKey(startedAt),
+    dateLabel: formatDateLabel(startedAt),
+    departPressedAt: startedAt.toISOString(),
+    departPressedTime: formatClock(startedAt),
+    routeSearchTime,
+    selected: null,
+    arrivalPressedAt: null,
+    arrivalPressedTime: null
+  };
 }
 
 function trainIcon(className = "route-icon") {
@@ -79,34 +152,6 @@ function setNext(text, forceMarquee = false) {
 function setAction(label, disabled = false) {
   mainActionButton.textContent = label;
   mainActionButton.disabled = disabled;
-}
-
-function openTimePicker() {
-  if (state !== "standby" && state !== "home") {
-    toast("記録中は時刻変更できません");
-    return;
-  }
-
-  timeInput.value = currentTime;
-  if (typeof timeInput.showPicker === "function") timeInput.showPicker();
-  else timeInput.click();
-}
-
-function updateRouteTime(time) {
-  currentTime = time;
-  timeText.textContent = time;
-  timeInput.value = time;
-  trains = loadTrainsForTime(time);
-  selected = null;
-  keptTrain = null;
-
-  if (state === "home") {
-    renderRoutes();
-    setAction("乗換完了", true);
-    setNext("乗換ルートをタップ！ﾉﾘｶｴ♪ﾉﾘｶｴ♫");
-  }
-
-  toast(`${time}のルートに変更しました`);
 }
 
 function renderRoutes() {
@@ -154,6 +199,10 @@ function stackedStop(time, station, label) {
 }
 
 function startCommute() {
+  const startedAt = new Date();
+  routeSearchTime = formatClock(startedAt);
+  trains = loadTrainsForTime(routeSearchTime);
+  commuteRecord = createCommuteRecord(startedAt);
   state = "home";
   selected = null;
   keptTrain = null;
@@ -162,7 +211,7 @@ function startCommute() {
   setNext("乗換ルートをタップ！ﾉﾘｶｴ♪ﾉﾘｶｴ♫");
   setAction("乗換完了", true);
   renderRoutes();
-  toast("ルートを表示しました");
+  toast(`${commuteRecord.departPressedTime} 出発を記録しました`);
 }
 
 function toggleCard(button) {
@@ -188,13 +237,14 @@ function selectBranch(trainIndex, routeIndex) {
     trainIndex,
     routeIndex,
     routeLabel: `乗換 ${route.id}`,
-    searchTime: currentTime,
+    searchTime: routeSearchTime,
     start: train.start,
     startTime: train.st,
     mid: train.mid,
     midTime: train.arr,
     ...route
   };
+  if (commuteRecord) commuteRecord.selected = selected;
   renderRoutes();
 
   requestAnimationFrame(() => {
@@ -216,7 +266,7 @@ function selectOther(trainIndex) {
     kind: "other",
     trainIndex,
     routeLabel: "想定外の乗換",
-    searchTime: currentTime,
+    searchTime: routeSearchTime,
     start: train.start,
     startTime: train.st,
     mid: train.mid,
@@ -228,6 +278,7 @@ function selectOther(trainIndex) {
     toTime: "--:--",
     officeTime: train.routes[0] ? train.routes[0].officeTime : "--:--"
   };
+  if (commuteRecord) commuteRecord.selected = selected;
   renderRoutes();
 
   requestAnimationFrame(() => {
@@ -255,33 +306,135 @@ function goArrivalWait() {
   toast("乗換完了");
 }
 
-function renderRecordSummary() {
-  if (!selected) return;
+function summaryIcon(type) {
+  const icons = {
+    building: "assets/building.png",
+    frog: "assets/kerry.png",
+    train: "assets/train.png"
+  };
+  return icons[type] || icons.train;
+}
 
-  document.getElementById("summaryTargetTime").textContent = selected.searchTime;
-  document.getElementById("summaryStartTime").textContent = `${selected.startTime}発`;
-  document.getElementById("summaryStart").textContent = selected.start;
-  document.getElementById("summaryMidTime").textContent = `${selected.midTime}着`;
-  document.getElementById("summaryMid").textContent = selected.mid;
-  document.getElementById("summaryTransferTime").textContent = selected.fromTime === "--:--" ? "--:--" : `${selected.fromTime}発`;
-  document.getElementById("summaryTransfer").textContent = selected.from;
-  document.getElementById("summaryArrivalTime").textContent = selected.officeTime;
-  document.getElementById("summaryChoice").textContent = selected.routeLabel;
+function summaryCard(icon, time, title, sub) {
+  return `
+    <div class="summary-card">
+      <span class="summary-icon"><img src="${summaryIcon(icon)}" alt=""></span>
+      <span class="summary-time">${time}</span>
+      <span>
+        <span class="summary-name">${title}</span>
+        <span class="summary-sub">${sub}</span>
+      </span>
+    </div>
+  `;
+}
+
+function renderRecordSummary(record = commuteRecord) {
+  const summary = record && record.selected;
+  if (!record || !summary) return;
+
+  const todayKey = formatDateKey(new Date());
+  const arrivalTime = record.arrivalPressedTime || "--:--";
+  const duration = durationMinutes(record.departPressedAt, record.arrivalPressedAt);
+  const wait = waitMinutes(record);
+  const transferTime = summary.fromTime === "--:--" ? "--:--" : `${summary.fromTime}発`;
+  const recordLabel = record.dateLabel || formatDateLabel(new Date(record.departPressedAt || Date.now()));
+
+  document.getElementById("recordTitle").textContent = record.dateKey === todayKey ? "今日のサマリー" : `${recordLabel}のサマリー`;
+  document.getElementById("summaryCards").innerHTML = [
+    summaryCard("building", record.departPressedTime, "出発", `出発ボタンをタップ / 検索 ${record.routeSearchTime}`),
+    summaryCard("train", `${summary.startTime}発`, summary.start, "予定ルート"),
+    summaryCard("train", `${summary.midTime}着`, summary.mid, `${summary.start}から移動`),
+    summaryCard("frog", "乗換", summary.wait, summary.routeLabel),
+    summaryCard("train", transferTime, summary.from, "乗換後の出発"),
+    summaryCard("train", summary.toTime === "--:--" ? "--:--" : `${summary.toTime}着`, summary.to, "乗換後の到着"),
+    summaryCard("building", arrivalTime, "会社到着", `予定 ${summary.officeTime}`)
+  ].join("");
+
+  document.getElementById("summaryDuration").textContent = duration === null ? "--分" : `${duration}分`;
+  document.getElementById("summaryWait").textContent = wait === null ? "--分" : `${wait}分`;
+  document.getElementById("summaryChoice").textContent = summary.routeLabel;
 }
 
 function arriveOffice() {
+  const arrivedAt = new Date();
+  if (commuteRecord) {
+    commuteRecord.arrivalPressedAt = arrivedAt.toISOString();
+    commuteRecord.arrivalPressedTime = formatClock(arrivedAt);
+    commuteRecord.selected = selected;
+    saveRecord(commuteRecord);
+  }
   state = "record";
   renderRecordSummary();
   show("recordView");
   setNext("お疲れ様でした！");
   setAction("ホームへ戻る");
-  toast("今日の記録へ");
+  toast(`${formatClock(arrivedAt)} 到着を記録しました`);
+}
+
+function renderHistory() {
+  const records = readHistory();
+  const successCount = records.filter((record) => record.selected && record.selected.kind === "route").length;
+  const successRate = records.length ? Math.round((successCount / records.length) * 1000) / 10 : null;
+
+  document.getElementById("historySuccessRate").textContent = successRate === null ? "--%" : `${successRate}%`;
+  document.getElementById("historySuccessCount").textContent = `${successCount}回`;
+
+  const list = document.getElementById("historyList");
+  if (!records.length) {
+    list.innerHTML = '<div class="history-empty">まだ記録がありません</div>';
+    return;
+  }
+
+  list.innerHTML = records.map((record) => {
+    const duration = durationMinutes(record.departPressedAt, record.arrivalPressedAt);
+    const wait = waitMinutes(record);
+    const frog = record.selected && record.selected.kind === "route" ? "assets/frog_happy.png" : "assets/frog_sad.png";
+    const label = record.dateLabel || formatDateLabel(new Date(record.departPressedAt || Date.now()));
+    return `
+      <button class="history-item" type="button" data-history-id="${record.id}">
+        <span>
+          <span class="history-date">${label}</span>
+          <span class="history-meta">通勤${duration === null ? "--" : duration}分 ｜ 乗換${wait === null ? "--" : wait}分</span>
+        </span>
+        <img class="history-frog" src="${frog}" alt="">
+        <span class="history-arrow">›</span>
+      </button>
+    `;
+  }).join("");
+}
+
+function openHistory() {
+  if (state === "home" || state === "arrivalWait") {
+    toast("記録中は履歴を開けません");
+    return;
+  }
+
+  state = "history";
+  document.body.classList.remove("standby-mode");
+  renderHistory();
+  show("historyView");
+  setNext("履歴をタップすると、その日のサマリーを見返せます。");
+  setAction("ホームへ戻る");
+}
+
+function openHistoryRecord(id) {
+  const record = readHistory().find((item) => item.id === id);
+  if (!record) return;
+
+  commuteRecord = record;
+  selected = record.selected;
+  state = "record";
+  renderRecordSummary(record);
+  show("recordView");
+  setNext("この日の通勤を振り返っています。");
+  setAction("ホームへ戻る");
 }
 
 function backStandby() {
   state = "standby";
   selected = null;
   keptTrain = null;
+  commuteRecord = null;
   document.body.classList.add("standby-mode");
   show("standbyView");
   setNext("おはようございます。今日も元気に出発しましょう。", true);
@@ -300,9 +453,16 @@ function mainAction() {
   else if (state === "home" && selected) goArrivalWait();
   else if (state === "arrivalWait") arriveOffice();
   else if (state === "record") backStandby();
+  else if (state === "history") backStandby();
 }
 
 document.addEventListener("click", (event) => {
+  const historyButton = event.target.closest("[data-open-history]");
+  if (historyButton) {
+    openHistory();
+    return;
+  }
+
   const toastButton = event.target.closest("[data-toast]");
   if (toastButton) toast(toastButton.dataset.toast);
 
@@ -324,6 +484,9 @@ document.addEventListener("click", (event) => {
 
   const otherButton = event.target.closest("[data-select-other]");
   if (otherButton) selectOther(Number(otherButton.dataset.selectOther));
+
+  const historyItem = event.target.closest("[data-history-id]");
+  if (historyItem) openHistoryRecord(historyItem.dataset.historyId);
 });
 
 document.addEventListener("keydown", (event) => {
@@ -338,14 +501,10 @@ document.addEventListener("keydown", (event) => {
 });
 
 mainActionButton.addEventListener("click", mainAction);
-timeButton.addEventListener("click", openTimePicker);
-timeInput.addEventListener("change", () => {
-  if (timeInput.value) updateRouteTime(timeInput.value);
-});
 
 window.addEventListener("load", () => {
   setTimeout(() => document.body.classList.add("ready"), 1000);
-  timeText.textContent = currentTime;
-  timeInput.value = currentTime;
+  updateClock();
+  setInterval(updateClock, 1000);
   setNext("おはようございます。今日も元気に出発しましょう。", true);
 });
