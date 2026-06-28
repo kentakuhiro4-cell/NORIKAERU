@@ -338,8 +338,22 @@ button { font: inherit; }
   line-height: 1;
 }
 
-.depart {
+.inline-time {
   font-size: 22px;
+  font-weight: 850;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.inline-station {
+  font-size: 22px;
+  font-weight: 820;
+  white-space: nowrap;
+}
+
+.inline-label {
+  font-size: 20px;
+  font-weight: 820;
   white-space: nowrap;
 }
 
@@ -447,13 +461,14 @@ button { font: inherit; }
   display: block;
   font-size: 15px;
   font-weight: 850;
+  margin-top: 5px;
 }
 
 .tm {
   display: block;
   font-size: 20px;
   font-weight: 850;
-  margin-top: 5px;
+  font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 

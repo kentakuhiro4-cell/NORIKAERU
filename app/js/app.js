@@ -1,6 +1,6 @@
 const trains = [
   {
-    start: "我孫子",
+    start: "あびこ",
     st: "07:42",
     mid: "動物園前",
     arr: "07:54",
@@ -10,7 +10,7 @@ const trains = [
     ]
   },
   {
-    start: "我孫子",
+    start: "あびこ",
     st: "07:45",
     mid: "動物園前",
     arr: "07:57",
@@ -20,7 +20,7 @@ const trains = [
     ]
   },
   {
-    start: "我孫子",
+    start: "あびこ",
     st: "07:47",
     mid: "動物園前",
     arr: "07:59",
@@ -75,12 +75,12 @@ function renderRoutes() {
     return `
       <section class="card route-card ${keptTrain === index ? "kept open" : ""}">
         <div class="head" role="button" tabindex="0" data-toggle-route>
-          <div class="main">${trainIcon()}<span>${train.start}</span><span class="depart">${train.st}発</span></div>
+          <div class="main">${trainIcon()}${inlineStop(train.st, train.start, "発")}</div>
           ${keptTrain === index ? '<button class="change-route" type="button" data-change-route>変更</button>' : ""}
         </div>
         <div class="detail">
           <div class="inner">
-            <div class="arrival">${trainIcon()}<span>${train.mid}</span><span>${train.arr}着</span></div>
+            <div class="arrival">${trainIcon()}${inlineStop(train.arr, train.mid, "着")}</div>
             <div class="branches" data-group="${index}">
               ${renderBranch(train.routes[0], "white", index, 0)}
               ${renderBranch(train.routes[1], "gray", index, 1)}
@@ -98,11 +98,19 @@ function renderBranch(route, style, trainIndex, routeIndex) {
     <button class="branch ${style}" type="button" data-select-branch="${trainIndex}:${routeIndex}">
       <div class="branch-head">乗換 ${route.wait}</div>
       <div class="mini">
-        <div class="stop first">${trainIcon("mini-icon")}<span><span class="station">${route.from}</span><span class="tm">${route.fromTime}発</span></span></div>
-        <div class="stop">${trainIcon("mini-icon")}<span><span class="station">${route.to}</span><span class="tm">${route.toTime}着</span></span></div>
+        <div class="stop first">${trainIcon("mini-icon")}${stackedStop(route.fromTime, route.from, "発")}</div>
+        <div class="stop">${trainIcon("mini-icon")}${stackedStop(route.toTime, route.to, "着")}</div>
       </div>
     </button>
   `;
+}
+
+function inlineStop(time, station, label) {
+  return `<span class="inline-time">${time}</span><span class="inline-station">${station}</span><span class="inline-label">${label}</span>`;
+}
+
+function stackedStop(time, station, label) {
+  return `<span class="stop-text"><span class="tm">${time}</span><span class="station">${station} ${label}</span></span>`;
 }
 
 function startCommute() {
@@ -175,9 +183,9 @@ function selectOther(trainIndex) {
 function goArrivalWait() {
   if (!selected) return;
   document.getElementById("waitFrom").textContent = selected.from;
-  document.getElementById("waitFromTime").textContent = formatTime(selected.fromTime, "発");
+  document.getElementById("waitFromTime").textContent = selected.fromTime;
   document.getElementById("waitTo").textContent = selected.to;
-  document.getElementById("waitToTime").textContent = formatTime(selected.toTime, "着");
+  document.getElementById("waitToTime").textContent = selected.toTime;
   document.getElementById("officeTime").textContent = selected.officeTime;
 
   state = "arrivalWait";
@@ -203,10 +211,6 @@ function backStandby() {
   show("standbyView");
   setNext("おはようございます。今日も元気に出発しましょう。", true);
   setAction("出発");
-}
-
-function formatTime(value, suffix) {
-  return value.includes(":") ? `${value}${suffix}` : value;
 }
 
 function toast(text) {
