@@ -32,8 +32,8 @@ const fallbackTrains = [
 ];
 
 const routeEngine = window.NORIKAERU_ROUTE_ENGINE;
-const routeTrains = routeEngine ? routeEngine.getMorningRoutes("07:42", 3) : [];
-const trains = routeTrains.length ? routeTrains : fallbackTrains;
+let currentTime = "07:42";
+let trains = loadTrainsForTime(currentTime);
 
 let selected = null;
 let state = "standby";
@@ -43,6 +43,14 @@ const views = ["standbyView", "homeView", "arrivalWaitView", "recordView"];
 const routeList = document.getElementById("routeList");
 const nextTrack = document.getElementById("nextTrack");
 const mainActionButton = document.getElementById("mainAction");
+const timeText = document.getElementById("timeText");
+const timeButton = document.getElementById("timeButton");
+const timeInput = document.getElementById("timeInput");
+
+function loadTrainsForTime(time) {
+  const routeTrains = routeEngine ? routeEngine.getMorningRoutes(time, 3) : [];
+  return routeTrains.length ? routeTrains : fallbackTrains;
+}
 
 function trainIcon(className = "route-icon") {
   return `<span class="${className}"><img src="assets/train.png" alt=""></span>`;
@@ -71,6 +79,34 @@ function setNext(text, forceMarquee = false) {
 function setAction(label, disabled = false) {
   mainActionButton.textContent = label;
   mainActionButton.disabled = disabled;
+}
+
+function openTimePicker() {
+  if (state !== "standby" && state !== "home") {
+    toast("記録中は時刻変更できません");
+    return;
+  }
+
+  timeInput.value = currentTime;
+  if (typeof timeInput.showPicker === "function") timeInput.showPicker();
+  else timeInput.click();
+}
+
+function updateRouteTime(time) {
+  currentTime = time;
+  timeText.textContent = time;
+  timeInput.value = time;
+  trains = loadTrainsForTime(time);
+  selected = null;
+  keptTrain = null;
+
+  if (state === "home") {
+    renderRoutes();
+    setAction("乗換完了", true);
+    setNext("乗換ルートをタップ！ﾉﾘｶｴ♪ﾉﾘｶｴ♫");
+  }
+
+  toast(`${time}のルートに変更しました`);
 }
 
 function renderRoutes() {
@@ -110,11 +146,11 @@ function renderBranch(route, style, trainIndex, routeIndex) {
 }
 
 function inlineStop(time, station, label) {
-  return `<span class="inline-time">${time}</span><span class="inline-station">${station}</span><span class="inline-label">${label}</span>`;
+  return `<span class="inline-time">${time}<span class="inline-label">${label}</span></span><span class="inline-station">${station}</span>`;
 }
 
 function stackedStop(time, station, label) {
-  return `<span class="stop-text"><span class="tm">${time}</span><span class="station">${station} ${label}</span></span>`;
+  return `<span class="stop-text"><span class="tm">${time}${label}</span><span class="station">${station}</span></span>`;
 }
 
 function startCommute() {
@@ -144,8 +180,21 @@ function changeRoute() {
 }
 
 function selectBranch(trainIndex, routeIndex) {
+  const train = trains[trainIndex];
+  const route = train.routes[routeIndex];
   keptTrain = trainIndex;
-  selected = { kind: "route", trainIndex, routeIndex, ...trains[trainIndex].routes[routeIndex] };
+  selected = {
+    kind: "route",
+    trainIndex,
+    routeIndex,
+    routeLabel: `乗換 ${route.id}`,
+    searchTime: currentTime,
+    start: train.start,
+    startTime: train.st,
+    mid: train.mid,
+    midTime: train.arr,
+    ...route
+  };
   renderRoutes();
 
   requestAnimationFrame(() => {
@@ -161,16 +210,23 @@ function selectBranch(trainIndex, routeIndex) {
 }
 
 function selectOther(trainIndex) {
+  const train = trains[trainIndex];
   keptTrain = trainIndex;
   selected = {
     kind: "other",
     trainIndex,
+    routeLabel: "想定外の乗換",
+    searchTime: currentTime,
+    start: train.start,
+    startTime: train.st,
+    mid: train.mid,
+    midTime: train.arr,
     wait: "想定外",
     from: "その他",
     fromTime: "--:--",
     to: "淡路",
     toTime: "--:--",
-    officeTime: "08:35"
+    officeTime: train.routes[0] ? train.routes[0].officeTime : "--:--"
   };
   renderRoutes();
 
@@ -199,8 +255,23 @@ function goArrivalWait() {
   toast("乗換完了");
 }
 
+function renderRecordSummary() {
+  if (!selected) return;
+
+  document.getElementById("summaryTargetTime").textContent = selected.searchTime;
+  document.getElementById("summaryStartTime").textContent = `${selected.startTime}発`;
+  document.getElementById("summaryStart").textContent = selected.start;
+  document.getElementById("summaryMidTime").textContent = `${selected.midTime}着`;
+  document.getElementById("summaryMid").textContent = selected.mid;
+  document.getElementById("summaryTransferTime").textContent = selected.fromTime === "--:--" ? "--:--" : `${selected.fromTime}発`;
+  document.getElementById("summaryTransfer").textContent = selected.from;
+  document.getElementById("summaryArrivalTime").textContent = selected.officeTime;
+  document.getElementById("summaryChoice").textContent = selected.routeLabel;
+}
+
 function arriveOffice() {
   state = "record";
+  renderRecordSummary();
   show("recordView");
   setNext("お疲れ様でした！");
   setAction("ホームへ戻る");
@@ -267,8 +338,14 @@ document.addEventListener("keydown", (event) => {
 });
 
 mainActionButton.addEventListener("click", mainAction);
+timeButton.addEventListener("click", openTimePicker);
+timeInput.addEventListener("change", () => {
+  if (timeInput.value) updateRouteTime(timeInput.value);
+});
 
 window.addEventListener("load", () => {
   setTimeout(() => document.body.classList.add("ready"), 1000);
+  timeText.textContent = currentTime;
+  timeInput.value = currentTime;
   setNext("おはようございます。今日も元気に出発しましょう。", true);
 });

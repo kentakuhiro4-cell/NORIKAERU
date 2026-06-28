@@ -111,17 +111,37 @@ button { font: inherit; }
 }
 
 .time-wrap {
+  position: relative;
   text-align: center;
   margin: 7px auto 0;
 }
 
+.time-button {
+  border: 0;
+  background: transparent;
+  color: inherit;
+  padding: 0 12px;
+  cursor: pointer;
+}
+
 .time {
+  display: block;
   font-size: 32px;
   font-weight: 650;
   line-height: 1;
 }
 
 .time.live { animation: softBlink 2.1s ease-in-out infinite; }
+
+.time-input {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
 
 @keyframes softBlink {
   0%, 100% { opacity: 1; }
@@ -564,13 +584,59 @@ button { font: inherit; }
 
 .record-summary {
   border-radius: 24px;
-  padding: 28px 20px;
+  padding: 20px;
   background: var(--glass);
   border: 1px solid var(--border);
   box-shadow: 0 10px 30px rgba(48, 90, 130, .11);
-  font-size: 18px;
   font-weight: 800;
-  line-height: 1.8;
+  line-height: 1.45;
+  text-align: left;
+}
+
+.summary-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(17, 19, 24, .1);
+  color: rgba(17, 19, 24, .66);
+  font-size: 14px;
+}
+
+.summary-row strong {
+  color: var(--text);
+  font-size: 24px;
+  font-variant-numeric: tabular-nums;
+}
+
+.summary-route {
+  display: grid;
+  gap: 12px;
+  margin: 18px 0;
+  font-size: 18px;
+}
+
+.summary-route div {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.summary-route span {
+  min-width: 68px;
+  color: rgba(17, 19, 24, .66);
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+
+.summary-choice {
+  border-radius: 18px;
+  padding: 13px 16px;
+  background: rgba(255, 255, 255, .72);
+  text-align: center;
+  font-size: 17px;
+  font-weight: 850;
 }
 
 #toast {

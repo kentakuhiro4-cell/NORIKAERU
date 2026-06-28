@@ -26,7 +26,10 @@
       </button>
     </div>
     <div class="time-wrap">
-      <div class="time live" id="timeText">07:42</div>
+      <button class="time-button" id="timeButton" type="button" aria-label="出発時刻を変更">
+        <span class="time live" id="timeText">07:42</span>
+      </button>
+      <input class="time-input" id="timeInput" type="time" value="07:42" min="05:00" max="10:59" step="60" aria-label="出発時刻">
     </div>
   </header>
 
@@ -69,8 +72,20 @@
     </section>
 
     <section id="recordView" class="hidden record-view">
-      <h1 class="record-title">今日の記録</h1>
-      <div class="record-summary">通勤記録を保存しました</div>
+      <h1 class="record-title">今日のサマリー</h1>
+      <div class="record-summary" id="recordSummary">
+        <div class="summary-row">
+          <span>出発検索</span>
+          <strong id="summaryTargetTime">07:42</strong>
+        </div>
+        <div class="summary-route">
+          <div><span id="summaryStartTime">07:42発</span> <strong id="summaryStart">あびこ</strong></div>
+          <div><span id="summaryMidTime">07:54着</span> <strong id="summaryMid">動物園前</strong></div>
+          <div><span id="summaryTransferTime">07:55発</span> <strong id="summaryTransfer">動物園前</strong></div>
+          <div><span id="summaryArrivalTime">08:35</span> <strong>会社到着（予定）</strong></div>
+        </div>
+        <div class="summary-choice" id="summaryChoice">乗換 A</div>
+      </div>
     </section>
   </main>
 
