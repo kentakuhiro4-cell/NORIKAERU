@@ -1,4 +1,4 @@
-const trains = [
+const fallbackTrains = [
   {
     start: "あびこ",
     st: "07:42",
@@ -30,6 +30,10 @@ const trains = [
     ]
   }
 ];
+
+const routeEngine = window.NORIKAERU_ROUTE_ENGINE;
+const routeTrains = routeEngine ? routeEngine.getMorningRoutes("07:42", 3) : [];
+const trains = routeTrains.length ? routeTrains : fallbackTrains;
 
 let selected = null;
 let state = "standby";

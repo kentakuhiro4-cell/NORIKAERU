@@ -1,0 +1,2274 @@
+window.NORIKAERU_ROUTE_WEEKDAY = {
+  "schemaVersion": 1,
+  "service": "weekday_morning_commute",
+  "source": {
+    "metroAbiko": "https://kensaku.osakametro.co.jp/timetable/ja/sp/subway/dia/station/25806/1019/2/#weekday",
+    "metroDobutsuenmae": "https://kensaku.osakametro.co.jp/timetable/ja/sp/subway/dia/station/26081/1024/2/#weekday",
+    "generatedAt": "2026-06-28T09:19:47.528Z",
+    "note": "Route times use fixed travel assumptions until RouteEngine validates against full transit data."
+  },
+  "assumptions": {
+    "abikoToDobutsuenMinutes": 12,
+    "dobutsuenToAwajiMinutes": 23,
+    "awajiToOfficeMinutes": 17,
+    "excludeDobutsuenDestinations": [
+      "天神橋筋六丁目"
+    ]
+  },
+  "routes": [
+    {
+      "id": "weekday-001",
+      "abikoDepart": "05:03",
+      "abikoDestination": "江坂",
+      "dobutsuenArrive": "05:15",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 5,
+          "dobutsuenDepart": "05:20",
+          "destination": "北千里",
+          "awajiArrive": "05:43",
+          "officeArrive": "06:00"
+        },
+        {
+          "id": "B",
+          "wait": 15,
+          "dobutsuenDepart": "05:30",
+          "destination": "北千里",
+          "awajiArrive": "05:53",
+          "officeArrive": "06:10"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-002",
+      "abikoDepart": "05:13",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "05:25",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 5,
+          "dobutsuenDepart": "05:30",
+          "destination": "北千里",
+          "awajiArrive": "05:53",
+          "officeArrive": "06:10"
+        },
+        {
+          "id": "B",
+          "wait": 15,
+          "dobutsuenDepart": "05:40",
+          "destination": "北千里",
+          "awajiArrive": "06:03",
+          "officeArrive": "06:20"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-003",
+      "abikoDepart": "05:23",
+      "abikoDestination": "江坂",
+      "dobutsuenArrive": "05:35",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 5,
+          "dobutsuenDepart": "05:40",
+          "destination": "北千里",
+          "awajiArrive": "06:03",
+          "officeArrive": "06:20"
+        },
+        {
+          "id": "B",
+          "wait": 15,
+          "dobutsuenDepart": "05:50",
+          "destination": "北千里",
+          "awajiArrive": "06:13",
+          "officeArrive": "06:30"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-004",
+      "abikoDepart": "05:33",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "05:45",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 5,
+          "dobutsuenDepart": "05:50",
+          "destination": "北千里",
+          "awajiArrive": "06:13",
+          "officeArrive": "06:30"
+        },
+        {
+          "id": "B",
+          "wait": 15,
+          "dobutsuenDepart": "06:00",
+          "destination": "北千里",
+          "awajiArrive": "06:23",
+          "officeArrive": "06:40"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-005",
+      "abikoDepart": "05:43",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "05:55",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 5,
+          "dobutsuenDepart": "06:00",
+          "destination": "北千里",
+          "awajiArrive": "06:23",
+          "officeArrive": "06:40"
+        },
+        {
+          "id": "B",
+          "wait": 14,
+          "dobutsuenDepart": "06:09",
+          "destination": "北千里",
+          "awajiArrive": "06:32",
+          "officeArrive": "06:49"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-006",
+      "abikoDepart": "05:52",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "06:04",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 5,
+          "dobutsuenDepart": "06:09",
+          "destination": "北千里",
+          "awajiArrive": "06:32",
+          "officeArrive": "06:49"
+        },
+        {
+          "id": "B",
+          "wait": 14,
+          "dobutsuenDepart": "06:18",
+          "destination": "北千里",
+          "awajiArrive": "06:41",
+          "officeArrive": "06:58"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-007",
+      "abikoDepart": "06:01",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "06:13",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 5,
+          "dobutsuenDepart": "06:18",
+          "destination": "北千里",
+          "awajiArrive": "06:41",
+          "officeArrive": "06:58"
+        },
+        {
+          "id": "B",
+          "wait": 13,
+          "dobutsuenDepart": "06:26",
+          "destination": "北千里",
+          "awajiArrive": "06:49",
+          "officeArrive": "07:06"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-008",
+      "abikoDepart": "06:06",
+      "abikoDestination": "新大阪",
+      "dobutsuenArrive": "06:18",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 0,
+          "dobutsuenDepart": "06:18",
+          "destination": "北千里",
+          "awajiArrive": "06:41",
+          "officeArrive": "06:58"
+        },
+        {
+          "id": "B",
+          "wait": 8,
+          "dobutsuenDepart": "06:26",
+          "destination": "北千里",
+          "awajiArrive": "06:49",
+          "officeArrive": "07:06"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-009",
+      "abikoDepart": "06:10",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "06:22",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 4,
+          "dobutsuenDepart": "06:26",
+          "destination": "北千里",
+          "awajiArrive": "06:49",
+          "officeArrive": "07:06"
+        },
+        {
+          "id": "B",
+          "wait": 10,
+          "dobutsuenDepart": "06:32",
+          "destination": "北千里",
+          "awajiArrive": "06:55",
+          "officeArrive": "07:12"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-010",
+      "abikoDepart": "06:14",
+      "abikoDestination": "新大阪",
+      "dobutsuenArrive": "06:26",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 0,
+          "dobutsuenDepart": "06:26",
+          "destination": "北千里",
+          "awajiArrive": "06:49",
+          "officeArrive": "07:06"
+        },
+        {
+          "id": "B",
+          "wait": 6,
+          "dobutsuenDepart": "06:32",
+          "destination": "北千里",
+          "awajiArrive": "06:55",
+          "officeArrive": "07:12"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-011",
+      "abikoDepart": "06:18",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "06:30",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 2,
+          "dobutsuenDepart": "06:32",
+          "destination": "北千里",
+          "awajiArrive": "06:55",
+          "officeArrive": "07:12"
+        },
+        {
+          "id": "B",
+          "wait": 9,
+          "dobutsuenDepart": "06:39",
+          "destination": "北千里",
+          "awajiArrive": "07:02",
+          "officeArrive": "07:19"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-012",
+      "abikoDepart": "06:22",
+      "abikoDestination": "新大阪",
+      "dobutsuenArrive": "06:34",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 5,
+          "dobutsuenDepart": "06:39",
+          "destination": "北千里",
+          "awajiArrive": "07:02",
+          "officeArrive": "07:19"
+        },
+        {
+          "id": "B",
+          "wait": 11,
+          "dobutsuenDepart": "06:45",
+          "destination": "高槻市",
+          "awajiArrive": "07:08",
+          "officeArrive": "07:25"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-013",
+      "abikoDepart": "06:26",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "06:38",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 1,
+          "dobutsuenDepart": "06:39",
+          "destination": "北千里",
+          "awajiArrive": "07:02",
+          "officeArrive": "07:19"
+        },
+        {
+          "id": "B",
+          "wait": 7,
+          "dobutsuenDepart": "06:45",
+          "destination": "高槻市",
+          "awajiArrive": "07:08",
+          "officeArrive": "07:25"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-014",
+      "abikoDepart": "06:30",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "06:42",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 3,
+          "dobutsuenDepart": "06:45",
+          "destination": "高槻市",
+          "awajiArrive": "07:08",
+          "officeArrive": "07:25"
+        },
+        {
+          "id": "B",
+          "wait": 9,
+          "dobutsuenDepart": "06:51",
+          "destination": "北千里",
+          "awajiArrive": "07:14",
+          "officeArrive": "07:31"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-015",
+      "abikoDepart": "06:34",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "06:46",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 5,
+          "dobutsuenDepart": "06:51",
+          "destination": "北千里",
+          "awajiArrive": "07:14",
+          "officeArrive": "07:31"
+        },
+        {
+          "id": "B",
+          "wait": 10,
+          "dobutsuenDepart": "06:56",
+          "destination": "北千里",
+          "awajiArrive": "07:19",
+          "officeArrive": "07:36"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-016",
+      "abikoDepart": "06:38",
+      "abikoDestination": "新大阪",
+      "dobutsuenArrive": "06:50",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 1,
+          "dobutsuenDepart": "06:51",
+          "destination": "北千里",
+          "awajiArrive": "07:14",
+          "officeArrive": "07:31"
+        },
+        {
+          "id": "B",
+          "wait": 6,
+          "dobutsuenDepart": "06:56",
+          "destination": "北千里",
+          "awajiArrive": "07:19",
+          "officeArrive": "07:36"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-017",
+      "abikoDepart": "06:43",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "06:55",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 1,
+          "dobutsuenDepart": "06:56",
+          "destination": "北千里",
+          "awajiArrive": "07:19",
+          "officeArrive": "07:36"
+        },
+        {
+          "id": "B",
+          "wait": 10,
+          "dobutsuenDepart": "07:05",
+          "destination": "高槻市",
+          "awajiArrive": "07:28",
+          "officeArrive": "07:45"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-018",
+      "abikoDepart": "06:46",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "06:58",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 7,
+          "dobutsuenDepart": "07:05",
+          "destination": "高槻市",
+          "awajiArrive": "07:28",
+          "officeArrive": "07:45"
+        },
+        {
+          "id": "B",
+          "wait": 11,
+          "dobutsuenDepart": "07:09",
+          "destination": "北千里",
+          "awajiArrive": "07:32",
+          "officeArrive": "07:49"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-019",
+      "abikoDepart": "06:48",
+      "abikoDestination": "新大阪",
+      "dobutsuenArrive": "07:00",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 5,
+          "dobutsuenDepart": "07:05",
+          "destination": "高槻市",
+          "awajiArrive": "07:28",
+          "officeArrive": "07:45"
+        },
+        {
+          "id": "B",
+          "wait": 9,
+          "dobutsuenDepart": "07:09",
+          "destination": "北千里",
+          "awajiArrive": "07:32",
+          "officeArrive": "07:49"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-020",
+      "abikoDepart": "06:51",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "07:03",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 2,
+          "dobutsuenDepart": "07:05",
+          "destination": "高槻市",
+          "awajiArrive": "07:28",
+          "officeArrive": "07:45"
+        },
+        {
+          "id": "B",
+          "wait": 6,
+          "dobutsuenDepart": "07:09",
+          "destination": "北千里",
+          "awajiArrive": "07:32",
+          "officeArrive": "07:49"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-021",
+      "abikoDepart": "06:53",
+      "abikoDestination": "中津",
+      "dobutsuenArrive": "07:05",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 0,
+          "dobutsuenDepart": "07:05",
+          "destination": "高槻市",
+          "awajiArrive": "07:28",
+          "officeArrive": "07:45"
+        },
+        {
+          "id": "B",
+          "wait": 4,
+          "dobutsuenDepart": "07:09",
+          "destination": "北千里",
+          "awajiArrive": "07:32",
+          "officeArrive": "07:49"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-022",
+      "abikoDepart": "06:55",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "07:07",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 2,
+          "dobutsuenDepart": "07:09",
+          "destination": "北千里",
+          "awajiArrive": "07:32",
+          "officeArrive": "07:49"
+        },
+        {
+          "id": "B",
+          "wait": 6,
+          "dobutsuenDepart": "07:13",
+          "destination": "北千里",
+          "awajiArrive": "07:36",
+          "officeArrive": "07:53"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-023",
+      "abikoDepart": "06:57",
+      "abikoDestination": "新大阪",
+      "dobutsuenArrive": "07:09",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 0,
+          "dobutsuenDepart": "07:09",
+          "destination": "北千里",
+          "awajiArrive": "07:32",
+          "officeArrive": "07:49"
+        },
+        {
+          "id": "B",
+          "wait": 4,
+          "dobutsuenDepart": "07:13",
+          "destination": "北千里",
+          "awajiArrive": "07:36",
+          "officeArrive": "07:53"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-024",
+      "abikoDepart": "07:00",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "07:12",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 1,
+          "dobutsuenDepart": "07:13",
+          "destination": "北千里",
+          "awajiArrive": "07:36",
+          "officeArrive": "07:53"
+        },
+        {
+          "id": "B",
+          "wait": 6,
+          "dobutsuenDepart": "07:18",
+          "destination": "茨木市",
+          "awajiArrive": "07:41",
+          "officeArrive": "07:58"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-025",
+      "abikoDepart": "07:04",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "07:16",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 2,
+          "dobutsuenDepart": "07:18",
+          "destination": "茨木市",
+          "awajiArrive": "07:41",
+          "officeArrive": "07:58"
+        },
+        {
+          "id": "B",
+          "wait": 11,
+          "dobutsuenDepart": "07:27",
+          "destination": "北千里",
+          "awajiArrive": "07:50",
+          "officeArrive": "08:07"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-026",
+      "abikoDepart": "07:06",
+      "abikoDestination": "新大阪",
+      "dobutsuenArrive": "07:18",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 0,
+          "dobutsuenDepart": "07:18",
+          "destination": "茨木市",
+          "awajiArrive": "07:41",
+          "officeArrive": "07:58"
+        },
+        {
+          "id": "B",
+          "wait": 9,
+          "dobutsuenDepart": "07:27",
+          "destination": "北千里",
+          "awajiArrive": "07:50",
+          "officeArrive": "08:07"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-027",
+      "abikoDepart": "07:09",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "07:21",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 6,
+          "dobutsuenDepart": "07:27",
+          "destination": "北千里",
+          "awajiArrive": "07:50",
+          "officeArrive": "08:07"
+        },
+        {
+          "id": "B",
+          "wait": 11,
+          "dobutsuenDepart": "07:32",
+          "destination": "北千里",
+          "awajiArrive": "07:55",
+          "officeArrive": "08:12"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-028",
+      "abikoDepart": "07:13",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "07:25",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 2,
+          "dobutsuenDepart": "07:27",
+          "destination": "北千里",
+          "awajiArrive": "07:50",
+          "officeArrive": "08:07"
+        },
+        {
+          "id": "B",
+          "wait": 7,
+          "dobutsuenDepart": "07:32",
+          "destination": "北千里",
+          "awajiArrive": "07:55",
+          "officeArrive": "08:12"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-029",
+      "abikoDepart": "07:15",
+      "abikoDestination": "新大阪",
+      "dobutsuenArrive": "07:27",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 0,
+          "dobutsuenDepart": "07:27",
+          "destination": "北千里",
+          "awajiArrive": "07:50",
+          "officeArrive": "08:07"
+        },
+        {
+          "id": "B",
+          "wait": 5,
+          "dobutsuenDepart": "07:32",
+          "destination": "北千里",
+          "awajiArrive": "07:55",
+          "officeArrive": "08:12"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-030",
+      "abikoDepart": "07:18",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "07:30",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 2,
+          "dobutsuenDepart": "07:32",
+          "destination": "北千里",
+          "awajiArrive": "07:55",
+          "officeArrive": "08:12"
+        },
+        {
+          "id": "B",
+          "wait": 6,
+          "dobutsuenDepart": "07:36",
+          "destination": "茨木市",
+          "awajiArrive": "07:59",
+          "officeArrive": "08:16"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-031",
+      "abikoDepart": "07:22",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "07:34",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 2,
+          "dobutsuenDepart": "07:36",
+          "destination": "茨木市",
+          "awajiArrive": "07:59",
+          "officeArrive": "08:16"
+        },
+        {
+          "id": "B",
+          "wait": 7,
+          "dobutsuenDepart": "07:41",
+          "destination": "高槻市",
+          "awajiArrive": "08:04",
+          "officeArrive": "08:21"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-032",
+      "abikoDepart": "07:24",
+      "abikoDestination": "新大阪",
+      "dobutsuenArrive": "07:36",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 0,
+          "dobutsuenDepart": "07:36",
+          "destination": "茨木市",
+          "awajiArrive": "07:59",
+          "officeArrive": "08:16"
+        },
+        {
+          "id": "B",
+          "wait": 5,
+          "dobutsuenDepart": "07:41",
+          "destination": "高槻市",
+          "awajiArrive": "08:04",
+          "officeArrive": "08:21"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-033",
+      "abikoDepart": "07:27",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "07:39",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 2,
+          "dobutsuenDepart": "07:41",
+          "destination": "高槻市",
+          "awajiArrive": "08:04",
+          "officeArrive": "08:21"
+        },
+        {
+          "id": "B",
+          "wait": 5,
+          "dobutsuenDepart": "07:44",
+          "destination": "北千里",
+          "awajiArrive": "08:07",
+          "officeArrive": "08:24"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-034",
+      "abikoDepart": "07:31",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "07:43",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 1,
+          "dobutsuenDepart": "07:44",
+          "destination": "北千里",
+          "awajiArrive": "08:07",
+          "officeArrive": "08:24"
+        },
+        {
+          "id": "B",
+          "wait": 8,
+          "dobutsuenDepart": "07:51",
+          "destination": "北千里",
+          "awajiArrive": "08:14",
+          "officeArrive": "08:31"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-035",
+      "abikoDepart": "07:33",
+      "abikoDestination": "新大阪",
+      "dobutsuenArrive": "07:45",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 6,
+          "dobutsuenDepart": "07:51",
+          "destination": "北千里",
+          "awajiArrive": "08:14",
+          "officeArrive": "08:31"
+        },
+        {
+          "id": "B",
+          "wait": 10,
+          "dobutsuenDepart": "07:55",
+          "destination": "茨木市",
+          "awajiArrive": "08:18",
+          "officeArrive": "08:35"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-036",
+      "abikoDepart": "07:36",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "07:48",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 3,
+          "dobutsuenDepart": "07:51",
+          "destination": "北千里",
+          "awajiArrive": "08:14",
+          "officeArrive": "08:31"
+        },
+        {
+          "id": "B",
+          "wait": 7,
+          "dobutsuenDepart": "07:55",
+          "destination": "茨木市",
+          "awajiArrive": "08:18",
+          "officeArrive": "08:35"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-037",
+      "abikoDepart": "07:40",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "07:52",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 3,
+          "dobutsuenDepart": "07:55",
+          "destination": "茨木市",
+          "awajiArrive": "08:18",
+          "officeArrive": "08:35"
+        },
+        {
+          "id": "B",
+          "wait": 6,
+          "dobutsuenDepart": "07:58",
+          "destination": "高槻市",
+          "awajiArrive": "08:21",
+          "officeArrive": "08:38"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-038",
+      "abikoDepart": "07:42",
+      "abikoDestination": "新大阪",
+      "dobutsuenArrive": "07:54",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 1,
+          "dobutsuenDepart": "07:55",
+          "destination": "茨木市",
+          "awajiArrive": "08:18",
+          "officeArrive": "08:35"
+        },
+        {
+          "id": "B",
+          "wait": 4,
+          "dobutsuenDepart": "07:58",
+          "destination": "高槻市",
+          "awajiArrive": "08:21",
+          "officeArrive": "08:38"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-039",
+      "abikoDepart": "07:45",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "07:57",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 1,
+          "dobutsuenDepart": "07:58",
+          "destination": "高槻市",
+          "awajiArrive": "08:21",
+          "officeArrive": "08:38"
+        },
+        {
+          "id": "B",
+          "wait": 5,
+          "dobutsuenDepart": "08:02",
+          "destination": "北千里",
+          "awajiArrive": "08:25",
+          "officeArrive": "08:42"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-040",
+      "abikoDepart": "07:47",
+      "abikoDestination": "中津",
+      "dobutsuenArrive": "07:59",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 3,
+          "dobutsuenDepart": "08:02",
+          "destination": "北千里",
+          "awajiArrive": "08:25",
+          "officeArrive": "08:42"
+        },
+        {
+          "id": "B",
+          "wait": 10,
+          "dobutsuenDepart": "08:09",
+          "destination": "北千里",
+          "awajiArrive": "08:32",
+          "officeArrive": "08:49"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-041",
+      "abikoDepart": "07:49",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "08:01",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 1,
+          "dobutsuenDepart": "08:02",
+          "destination": "北千里",
+          "awajiArrive": "08:25",
+          "officeArrive": "08:42"
+        },
+        {
+          "id": "B",
+          "wait": 8,
+          "dobutsuenDepart": "08:09",
+          "destination": "北千里",
+          "awajiArrive": "08:32",
+          "officeArrive": "08:49"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-042",
+      "abikoDepart": "07:54",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "08:06",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 3,
+          "dobutsuenDepart": "08:09",
+          "destination": "北千里",
+          "awajiArrive": "08:32",
+          "officeArrive": "08:49"
+        },
+        {
+          "id": "B",
+          "wait": 6,
+          "dobutsuenDepart": "08:12",
+          "destination": "河原町",
+          "awajiArrive": "08:35",
+          "officeArrive": "08:52"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-043",
+      "abikoDepart": "07:56",
+      "abikoDestination": "中津",
+      "dobutsuenArrive": "08:08",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 1,
+          "dobutsuenDepart": "08:09",
+          "destination": "北千里",
+          "awajiArrive": "08:32",
+          "officeArrive": "08:49"
+        },
+        {
+          "id": "B",
+          "wait": 4,
+          "dobutsuenDepart": "08:12",
+          "destination": "河原町",
+          "awajiArrive": "08:35",
+          "officeArrive": "08:52"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-044",
+      "abikoDepart": "07:58",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "08:10",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 2,
+          "dobutsuenDepart": "08:12",
+          "destination": "河原町",
+          "awajiArrive": "08:35",
+          "officeArrive": "08:52"
+        },
+        {
+          "id": "B",
+          "wait": 6,
+          "dobutsuenDepart": "08:16",
+          "destination": "高槻市",
+          "awajiArrive": "08:39",
+          "officeArrive": "08:56"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-045",
+      "abikoDepart": "08:03",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "08:15",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 1,
+          "dobutsuenDepart": "08:16",
+          "destination": "高槻市",
+          "awajiArrive": "08:39",
+          "officeArrive": "08:56"
+        },
+        {
+          "id": "B",
+          "wait": 4,
+          "dobutsuenDepart": "08:19",
+          "destination": "北千里",
+          "awajiArrive": "08:42",
+          "officeArrive": "08:59"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-046",
+      "abikoDepart": "08:05",
+      "abikoDestination": "中津",
+      "dobutsuenArrive": "08:17",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 2,
+          "dobutsuenDepart": "08:19",
+          "destination": "北千里",
+          "awajiArrive": "08:42",
+          "officeArrive": "08:59"
+        },
+        {
+          "id": "B",
+          "wait": 9,
+          "dobutsuenDepart": "08:26",
+          "destination": "北千里",
+          "awajiArrive": "08:49",
+          "officeArrive": "09:06"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-047",
+      "abikoDepart": "08:07",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "08:19",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 0,
+          "dobutsuenDepart": "08:19",
+          "destination": "北千里",
+          "awajiArrive": "08:42",
+          "officeArrive": "08:59"
+        },
+        {
+          "id": "B",
+          "wait": 7,
+          "dobutsuenDepart": "08:26",
+          "destination": "北千里",
+          "awajiArrive": "08:49",
+          "officeArrive": "09:06"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-048",
+      "abikoDepart": "08:12",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "08:24",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 2,
+          "dobutsuenDepart": "08:26",
+          "destination": "北千里",
+          "awajiArrive": "08:49",
+          "officeArrive": "09:06"
+        },
+        {
+          "id": "B",
+          "wait": 9,
+          "dobutsuenDepart": "08:33",
+          "destination": "高槻市",
+          "awajiArrive": "08:56",
+          "officeArrive": "09:13"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-049",
+      "abikoDepart": "08:14",
+      "abikoDestination": "中津",
+      "dobutsuenArrive": "08:26",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 0,
+          "dobutsuenDepart": "08:26",
+          "destination": "北千里",
+          "awajiArrive": "08:49",
+          "officeArrive": "09:06"
+        },
+        {
+          "id": "B",
+          "wait": 7,
+          "dobutsuenDepart": "08:33",
+          "destination": "高槻市",
+          "awajiArrive": "08:56",
+          "officeArrive": "09:13"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-050",
+      "abikoDepart": "08:16",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "08:28",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 5,
+          "dobutsuenDepart": "08:33",
+          "destination": "高槻市",
+          "awajiArrive": "08:56",
+          "officeArrive": "09:13"
+        },
+        {
+          "id": "B",
+          "wait": 9,
+          "dobutsuenDepart": "08:37",
+          "destination": "北千里",
+          "awajiArrive": "09:00",
+          "officeArrive": "09:17"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-051",
+      "abikoDepart": "08:21",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "08:33",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 0,
+          "dobutsuenDepart": "08:33",
+          "destination": "高槻市",
+          "awajiArrive": "08:56",
+          "officeArrive": "09:13"
+        },
+        {
+          "id": "B",
+          "wait": 4,
+          "dobutsuenDepart": "08:37",
+          "destination": "北千里",
+          "awajiArrive": "09:00",
+          "officeArrive": "09:17"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-052",
+      "abikoDepart": "08:23",
+      "abikoDestination": "中津",
+      "dobutsuenArrive": "08:35",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 2,
+          "dobutsuenDepart": "08:37",
+          "destination": "北千里",
+          "awajiArrive": "09:00",
+          "officeArrive": "09:17"
+        },
+        {
+          "id": "B",
+          "wait": 9,
+          "dobutsuenDepart": "08:44",
+          "destination": "北千里",
+          "awajiArrive": "09:07",
+          "officeArrive": "09:24"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-053",
+      "abikoDepart": "08:25",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "08:37",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 0,
+          "dobutsuenDepart": "08:37",
+          "destination": "北千里",
+          "awajiArrive": "09:00",
+          "officeArrive": "09:17"
+        },
+        {
+          "id": "B",
+          "wait": 7,
+          "dobutsuenDepart": "08:44",
+          "destination": "北千里",
+          "awajiArrive": "09:07",
+          "officeArrive": "09:24"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-054",
+      "abikoDepart": "08:30",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "08:42",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 2,
+          "dobutsuenDepart": "08:44",
+          "destination": "北千里",
+          "awajiArrive": "09:07",
+          "officeArrive": "09:24"
+        },
+        {
+          "id": "B",
+          "wait": 5,
+          "dobutsuenDepart": "08:47",
+          "destination": "正雀",
+          "awajiArrive": "09:10",
+          "officeArrive": "09:27"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-055",
+      "abikoDepart": "08:32",
+      "abikoDestination": "中津",
+      "dobutsuenArrive": "08:44",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 0,
+          "dobutsuenDepart": "08:44",
+          "destination": "北千里",
+          "awajiArrive": "09:07",
+          "officeArrive": "09:24"
+        },
+        {
+          "id": "B",
+          "wait": 3,
+          "dobutsuenDepart": "08:47",
+          "destination": "正雀",
+          "awajiArrive": "09:10",
+          "officeArrive": "09:27"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-056",
+      "abikoDepart": "08:34",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "08:46",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 1,
+          "dobutsuenDepart": "08:47",
+          "destination": "正雀",
+          "awajiArrive": "09:10",
+          "officeArrive": "09:27"
+        },
+        {
+          "id": "B",
+          "wait": 5,
+          "dobutsuenDepart": "08:51",
+          "destination": "茨木市",
+          "awajiArrive": "09:14",
+          "officeArrive": "09:31"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-057",
+      "abikoDepart": "08:39",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "08:51",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 0,
+          "dobutsuenDepart": "08:51",
+          "destination": "茨木市",
+          "awajiArrive": "09:14",
+          "officeArrive": "09:31"
+        },
+        {
+          "id": "B",
+          "wait": 7,
+          "dobutsuenDepart": "08:58",
+          "destination": "高槻市",
+          "awajiArrive": "09:21",
+          "officeArrive": "09:38"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-058",
+      "abikoDepart": "08:41",
+      "abikoDestination": "中津",
+      "dobutsuenArrive": "08:53",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 5,
+          "dobutsuenDepart": "08:58",
+          "destination": "高槻市",
+          "awajiArrive": "09:21",
+          "officeArrive": "09:38"
+        },
+        {
+          "id": "B",
+          "wait": 8,
+          "dobutsuenDepart": "09:01",
+          "destination": "北千里",
+          "awajiArrive": "09:24",
+          "officeArrive": "09:41"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-059",
+      "abikoDepart": "08:43",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "08:55",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 3,
+          "dobutsuenDepart": "08:58",
+          "destination": "高槻市",
+          "awajiArrive": "09:21",
+          "officeArrive": "09:38"
+        },
+        {
+          "id": "B",
+          "wait": 6,
+          "dobutsuenDepart": "09:01",
+          "destination": "北千里",
+          "awajiArrive": "09:24",
+          "officeArrive": "09:41"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-060",
+      "abikoDepart": "08:48",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "09:00",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 1,
+          "dobutsuenDepart": "09:01",
+          "destination": "北千里",
+          "awajiArrive": "09:24",
+          "officeArrive": "09:41"
+        },
+        {
+          "id": "B",
+          "wait": 5,
+          "dobutsuenDepart": "09:05",
+          "destination": "正雀",
+          "awajiArrive": "09:28",
+          "officeArrive": "09:45"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-061",
+      "abikoDepart": "08:51",
+      "abikoDestination": "中津",
+      "dobutsuenArrive": "09:03",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 2,
+          "dobutsuenDepart": "09:05",
+          "destination": "正雀",
+          "awajiArrive": "09:28",
+          "officeArrive": "09:45"
+        },
+        {
+          "id": "B",
+          "wait": 6,
+          "dobutsuenDepart": "09:09",
+          "destination": "高槻市",
+          "awajiArrive": "09:32",
+          "officeArrive": "09:49"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-062",
+      "abikoDepart": "08:53",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "09:05",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 0,
+          "dobutsuenDepart": "09:05",
+          "destination": "正雀",
+          "awajiArrive": "09:28",
+          "officeArrive": "09:45"
+        },
+        {
+          "id": "B",
+          "wait": 4,
+          "dobutsuenDepart": "09:09",
+          "destination": "高槻市",
+          "awajiArrive": "09:32",
+          "officeArrive": "09:49"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-063",
+      "abikoDepart": "09:01",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "09:13",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 0,
+          "dobutsuenDepart": "09:13",
+          "destination": "正雀",
+          "awajiArrive": "09:36",
+          "officeArrive": "09:53"
+        },
+        {
+          "id": "B",
+          "wait": 4,
+          "dobutsuenDepart": "09:17",
+          "destination": "北千里",
+          "awajiArrive": "09:40",
+          "officeArrive": "09:57"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-064",
+      "abikoDepart": "09:06",
+      "abikoDestination": "中津",
+      "dobutsuenArrive": "09:18",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 4,
+          "dobutsuenDepart": "09:22",
+          "destination": "正雀",
+          "awajiArrive": "09:45",
+          "officeArrive": "10:02"
+        },
+        {
+          "id": "B",
+          "wait": 9,
+          "dobutsuenDepart": "09:27",
+          "destination": "高槻市",
+          "awajiArrive": "09:50",
+          "officeArrive": "10:07"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-065",
+      "abikoDepart": "09:10",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "09:22",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 0,
+          "dobutsuenDepart": "09:22",
+          "destination": "正雀",
+          "awajiArrive": "09:45",
+          "officeArrive": "10:02"
+        },
+        {
+          "id": "B",
+          "wait": 5,
+          "dobutsuenDepart": "09:27",
+          "destination": "高槻市",
+          "awajiArrive": "09:50",
+          "officeArrive": "10:07"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-066",
+      "abikoDepart": "09:17",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "09:29",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 3,
+          "dobutsuenDepart": "09:32",
+          "destination": "正雀",
+          "awajiArrive": "09:55",
+          "officeArrive": "10:12"
+        },
+        {
+          "id": "B",
+          "wait": 9,
+          "dobutsuenDepart": "09:38",
+          "destination": "北千里",
+          "awajiArrive": "10:01",
+          "officeArrive": "10:18"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-067",
+      "abikoDepart": "09:22",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "09:34",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 4,
+          "dobutsuenDepart": "09:38",
+          "destination": "北千里",
+          "awajiArrive": "10:01",
+          "officeArrive": "10:18"
+        },
+        {
+          "id": "B",
+          "wait": 8,
+          "dobutsuenDepart": "09:42",
+          "destination": "北千里",
+          "awajiArrive": "10:05",
+          "officeArrive": "10:22"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-068",
+      "abikoDepart": "09:27",
+      "abikoDestination": "中津",
+      "dobutsuenArrive": "09:39",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 3,
+          "dobutsuenDepart": "09:42",
+          "destination": "北千里",
+          "awajiArrive": "10:05",
+          "officeArrive": "10:22"
+        },
+        {
+          "id": "B",
+          "wait": 12,
+          "dobutsuenDepart": "09:51",
+          "destination": "高槻市",
+          "awajiArrive": "10:14",
+          "officeArrive": "10:31"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-069",
+      "abikoDepart": "09:32",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "09:44",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 7,
+          "dobutsuenDepart": "09:51",
+          "destination": "高槻市",
+          "awajiArrive": "10:14",
+          "officeArrive": "10:31"
+        },
+        {
+          "id": "B",
+          "wait": 17,
+          "dobutsuenDepart": "10:01",
+          "destination": "北千里",
+          "awajiArrive": "10:24",
+          "officeArrive": "10:41"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-070",
+      "abikoDepart": "09:40",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "09:52",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 9,
+          "dobutsuenDepart": "10:01",
+          "destination": "北千里",
+          "awajiArrive": "10:24",
+          "officeArrive": "10:41"
+        },
+        {
+          "id": "B",
+          "wait": 14,
+          "dobutsuenDepart": "10:06",
+          "destination": "正雀",
+          "awajiArrive": "10:29",
+          "officeArrive": "10:46"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-071",
+      "abikoDepart": "09:45",
+      "abikoDestination": "新大阪",
+      "dobutsuenArrive": "09:57",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 4,
+          "dobutsuenDepart": "10:01",
+          "destination": "北千里",
+          "awajiArrive": "10:24",
+          "officeArrive": "10:41"
+        },
+        {
+          "id": "B",
+          "wait": 9,
+          "dobutsuenDepart": "10:06",
+          "destination": "正雀",
+          "awajiArrive": "10:29",
+          "officeArrive": "10:46"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-072",
+      "abikoDepart": "09:49",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "10:01",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 0,
+          "dobutsuenDepart": "10:01",
+          "destination": "北千里",
+          "awajiArrive": "10:24",
+          "officeArrive": "10:41"
+        },
+        {
+          "id": "B",
+          "wait": 5,
+          "dobutsuenDepart": "10:06",
+          "destination": "正雀",
+          "awajiArrive": "10:29",
+          "officeArrive": "10:46"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-073",
+      "abikoDepart": "09:56",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "10:08",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 3,
+          "dobutsuenDepart": "10:11",
+          "destination": "高槻市",
+          "awajiArrive": "10:34",
+          "officeArrive": "10:51"
+        },
+        {
+          "id": "B",
+          "wait": 13,
+          "dobutsuenDepart": "10:21",
+          "destination": "北千里",
+          "awajiArrive": "10:44",
+          "officeArrive": "11:01"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-074",
+      "abikoDepart": "10:04",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "10:16",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 5,
+          "dobutsuenDepart": "10:21",
+          "destination": "北千里",
+          "awajiArrive": "10:44",
+          "officeArrive": "11:01"
+        },
+        {
+          "id": "B",
+          "wait": 15,
+          "dobutsuenDepart": "10:31",
+          "destination": "高槻市",
+          "awajiArrive": "10:54",
+          "officeArrive": "11:11"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-075",
+      "abikoDepart": "10:11",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "10:23",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 8,
+          "dobutsuenDepart": "10:31",
+          "destination": "高槻市",
+          "awajiArrive": "10:54",
+          "officeArrive": "11:11"
+        },
+        {
+          "id": "B",
+          "wait": 13,
+          "dobutsuenDepart": "10:36",
+          "destination": "正雀",
+          "awajiArrive": "10:59",
+          "officeArrive": "11:16"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-076",
+      "abikoDepart": "10:19",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "10:31",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 0,
+          "dobutsuenDepart": "10:31",
+          "destination": "高槻市",
+          "awajiArrive": "10:54",
+          "officeArrive": "11:11"
+        },
+        {
+          "id": "B",
+          "wait": 5,
+          "dobutsuenDepart": "10:36",
+          "destination": "正雀",
+          "awajiArrive": "10:59",
+          "officeArrive": "11:16"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-077",
+      "abikoDepart": "10:23",
+      "abikoDestination": "新大阪",
+      "dobutsuenArrive": "10:35",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 1,
+          "dobutsuenDepart": "10:36",
+          "destination": "正雀",
+          "awajiArrive": "10:59",
+          "officeArrive": "11:16"
+        },
+        {
+          "id": "B",
+          "wait": 6,
+          "dobutsuenDepart": "10:41",
+          "destination": "北千里",
+          "awajiArrive": "11:04",
+          "officeArrive": "11:21"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-078",
+      "abikoDepart": "10:27",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "10:39",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 2,
+          "dobutsuenDepart": "10:41",
+          "destination": "北千里",
+          "awajiArrive": "11:04",
+          "officeArrive": "11:21"
+        },
+        {
+          "id": "B",
+          "wait": 9,
+          "dobutsuenDepart": "10:48",
+          "destination": "高槻市",
+          "awajiArrive": "11:11",
+          "officeArrive": "11:28"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-079",
+      "abikoDepart": "10:35",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "10:47",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 1,
+          "dobutsuenDepart": "10:48",
+          "destination": "高槻市",
+          "awajiArrive": "11:11",
+          "officeArrive": "11:28"
+        },
+        {
+          "id": "B",
+          "wait": 8,
+          "dobutsuenDepart": "10:55",
+          "destination": "正雀",
+          "awajiArrive": "11:18",
+          "officeArrive": "11:35"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-080",
+      "abikoDepart": "10:43",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "10:55",
+      "routes": [
+        {
+          "id": "A",
+          "wait": 0,
+          "dobutsuenDepart": "10:55",
+          "destination": "正雀",
+          "awajiArrive": "11:18",
+          "officeArrive": "11:35"
+        }
+      ],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-081",
+      "abikoDepart": "10:51",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "11:03",
+      "routes": [],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    },
+    {
+      "id": "weekday-082",
+      "abikoDepart": "10:59",
+      "abikoDestination": "箕面萱野",
+      "dobutsuenArrive": "11:11",
+      "routes": [],
+      "other": {
+        "id": "OTHER",
+        "type": "other"
+      }
+    }
+  ]
+};
