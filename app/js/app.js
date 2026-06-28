@@ -33,8 +33,13 @@ const fallbackTrains = [
 
 const routeEngine = window.NORIKAERU_ROUTE_ENGINE;
 const HISTORY_KEY = "norikaeruCommuteHistoryV1";
+const routeData = window.NORIKAERU_ROUTE_WEEKDAY || {};
+const routeAssumptions = routeData.assumptions || {};
+const DOBUTSUEN_TO_AWAJI_MINUTES = routeAssumptions.dobutsuenToAwajiMinutes || 23;
+const AWAJI_TO_OFFICE_MINUTES = routeAssumptions.awajiToOfficeMinutes || 17;
 let currentTime = formatClock(new Date());
 let routeSearchTime = currentTime;
+let routeTimeManual = false;
 let trains = loadTrainsForTime(routeSearchTime);
 
 let selected = null;
@@ -47,6 +52,9 @@ const routeList = document.getElementById("routeList");
 const nextTrack = document.getElementById("nextTrack");
 const mainActionButton = document.getElementById("mainAction");
 const timeText = document.getElementById("timeText");
+const routeTimePanel = document.getElementById("routeTimePanel");
+const routeTimeButton = document.getElementById("routeTimeButton");
+const routeTimeInput = document.getElementById("routeTimeInput");
 
 function loadTrainsForTime(time) {
   const routeTrains = routeEngine ? routeEngine.getMorningRoutes(time, 3) : [];
@@ -59,6 +67,38 @@ function pad(value) {
 
 function formatClock(date) {
   return `${pad(date.getHours())}:${pad(date.getMinutes())}`;
+}
+
+function timeToMinutes(time) {
+  const match = /^(\d{1,2}):([0-5]\d)$/.exec(String(time).trim());
+  if (!match) return null;
+  const hour = Number(match[1]);
+  if (hour < 0 || hour > 23) return null;
+  return hour * 60 + Number(match[2]);
+}
+
+function minutesToTime(minutes) {
+  const wrapped = ((minutes % 1440) + 1440) % 1440;
+  return `${pad(Math.floor(wrapped / 60))}:${pad(wrapped % 60)}`;
+}
+
+function addMinutes(time, minutes) {
+  const base = timeToMinutes(time);
+  return base === null ? "--:--" : minutesToTime(base + minutes);
+}
+
+function diffMinutes(start, end) {
+  const startMinutes = timeToMinutes(start);
+  const endMinutes = timeToMinutes(end);
+  if (startMinutes === null || endMinutes === null) return null;
+  let diff = endMinutes - startMinutes;
+  if (diff < -720) diff += 1440;
+  return Math.max(0, diff);
+}
+
+function normalizeTimeInput(value) {
+  const minutes = timeToMinutes(value);
+  return minutes === null ? null : minutesToTime(minutes);
 }
 
 function formatDateKey(date) {
@@ -108,6 +148,48 @@ function saveRecord(record) {
 function updateClock() {
   currentTime = formatClock(new Date());
   timeText.textContent = currentTime;
+
+  if (state === "standby" && !routeTimeManual) {
+    setRouteSearchTime(currentTime, { manual: false, silent: true });
+  }
+}
+
+function setRouteSearchTime(time, options = {}) {
+  const normalized = normalizeTimeInput(time);
+  if (!normalized) return false;
+
+  routeSearchTime = normalized;
+  routeTimeManual = Boolean(options.manual);
+  routeTimeButton.textContent = normalized;
+  routeTimeInput.value = normalized;
+  trains = loadTrainsForTime(normalized);
+  selected = null;
+  keptTrain = null;
+
+  if (commuteRecord) {
+    commuteRecord.routeSearchTime = normalized;
+    commuteRecord.selected = null;
+  }
+
+  if (state === "home") {
+    renderRoutes();
+    setAction("乗換完了", true);
+    setNext("乗換ルートをタップ！ﾉﾘｶｴ♪ﾉﾘｶｴ♫");
+  }
+
+  if (!options.silent) toast(`${normalized}のルートを表示します`);
+  return true;
+}
+
+function openRouteTimePicker() {
+  if (state !== "standby" && state !== "home") {
+    toast("この画面では検索時刻を変更できません");
+    return;
+  }
+
+  routeTimeInput.value = routeSearchTime;
+  if (typeof routeTimeInput.showPicker === "function") routeTimeInput.showPicker();
+  else routeTimeInput.click();
 }
 
 function createCommuteRecord(startedAt) {
@@ -132,6 +214,7 @@ function trainIcon(className = "route-icon") {
 function show(view) {
   views.forEach((id) => document.getElementById(id).classList.add("hidden"));
   document.getElementById(view).classList.remove("hidden");
+  routeTimePanel.classList.toggle("hidden", view !== "standbyView" && view !== "homeView");
 }
 
 function setNext(text, forceMarquee = false) {
@@ -200,8 +283,8 @@ function stackedStop(time, station, label) {
 
 function startCommute() {
   const startedAt = new Date();
-  routeSearchTime = formatClock(startedAt);
-  trains = loadTrainsForTime(routeSearchTime);
+  if (!routeTimeManual) setRouteSearchTime(formatClock(startedAt), { manual: false, silent: true });
+  else trains = loadTrainsForTime(routeSearchTime);
   commuteRecord = createCommuteRecord(startedAt);
   state = "home";
   selected = null;
@@ -259,8 +342,28 @@ function selectBranch(trainIndex, routeIndex) {
   setAction("乗換完了");
 }
 
+function askOtherDepartTime(train) {
+  const defaultTime = train.routes[0] ? train.routes[0].fromTime : addMinutes(train.arr, 1);
+  const value = window.prompt("動物園前の発車時刻を入力してください（例 08:02）", defaultTime);
+  if (value === null) return null;
+
+  const normalized = normalizeTimeInput(value);
+  if (!normalized) {
+    toast("時刻は 08:02 の形で入力してください");
+    return null;
+  }
+
+  return normalized;
+}
+
 function selectOther(trainIndex) {
   const train = trains[trainIndex];
+  const fromTime = askOtherDepartTime(train);
+  if (!fromTime) return;
+
+  const toTime = addMinutes(fromTime, DOBUTSUEN_TO_AWAJI_MINUTES);
+  const officeTime = addMinutes(toTime, AWAJI_TO_OFFICE_MINUTES);
+  const wait = diffMinutes(train.arr, fromTime);
   keptTrain = trainIndex;
   selected = {
     kind: "other",
@@ -271,12 +374,12 @@ function selectOther(trainIndex) {
     startTime: train.st,
     mid: train.mid,
     midTime: train.arr,
-    wait: "想定外",
-    from: "その他",
-    fromTime: "--:--",
+    wait: wait === null ? "想定外" : `${wait}分`,
+    from: "動物園前",
+    fromTime,
     to: "淡路",
-    toTime: "--:--",
-    officeTime: train.routes[0] ? train.routes[0].officeTime : "--:--"
+    toTime,
+    officeTime
   };
   if (commuteRecord) commuteRecord.selected = selected;
   renderRoutes();
@@ -435,6 +538,8 @@ function backStandby() {
   selected = null;
   keptTrain = null;
   commuteRecord = null;
+  routeTimeManual = false;
+  setRouteSearchTime(currentTime, { manual: false, silent: true });
   document.body.classList.add("standby-mode");
   show("standbyView");
   setNext("おはようございます。今日も元気に出発しましょう。", true);
@@ -501,6 +606,10 @@ document.addEventListener("keydown", (event) => {
 });
 
 mainActionButton.addEventListener("click", mainAction);
+routeTimeButton.addEventListener("click", openRouteTimePicker);
+routeTimeInput.addEventListener("change", () => {
+  if (routeTimeInput.value) setRouteSearchTime(routeTimeInput.value, { manual: true });
+});
 
 window.addEventListener("load", () => {
   setTimeout(() => document.body.classList.add("ready"), 1000);
