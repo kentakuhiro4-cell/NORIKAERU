@@ -418,14 +418,17 @@ function summaryIcon(type) {
   return icons[type] || icons.train;
 }
 
-function summaryCard(icon, time, title, sub) {
+function displayTime(time) {
+  return String(time).replace(/[発着]$/u, "");
+}
+
+function summaryCard(icon, time, title) {
   return `
     <div class="summary-card">
       <span class="summary-icon"><img src="${summaryIcon(icon)}" alt=""></span>
-      <span class="summary-time">${time}</span>
+      <span class="summary-time">${displayTime(time)}</span>
       <span>
         <span class="summary-name">${title}</span>
-        <span class="summary-sub">${sub}</span>
       </span>
     </div>
   `;
@@ -439,23 +442,23 @@ function renderRecordSummary(record = commuteRecord) {
   const arrivalTime = record.arrivalPressedTime || "--:--";
   const duration = durationMinutes(record.departPressedAt, record.arrivalPressedAt);
   const wait = waitMinutes(record);
-  const transferTime = summary.fromTime === "--:--" ? "--:--" : `${summary.fromTime}発`;
+  const transferTime = summary.fromTime === "--:--" ? "--:--" : summary.fromTime;
   const recordLabel = record.dateLabel || formatDateLabel(new Date(record.departPressedAt || Date.now()));
 
   document.getElementById("recordTitle").textContent = record.dateKey === todayKey ? "今日のサマリー" : `${recordLabel}のサマリー`;
   document.getElementById("summaryCards").innerHTML = [
-    summaryCard("building", record.departPressedTime, "出発", `出発ボタンをタップ / 検索 ${record.routeSearchTime}`),
-    summaryCard("train", `${summary.startTime}発`, summary.start, "予定ルート"),
-    summaryCard("train", `${summary.midTime}着`, summary.mid, `${summary.start}から移動`),
-    summaryCard("frog", "乗換", summary.wait, summary.routeLabel),
-    summaryCard("train", transferTime, summary.from, "乗換後の出発"),
-    summaryCard("train", summary.toTime === "--:--" ? "--:--" : `${summary.toTime}着`, summary.to, "乗換後の到着"),
-    summaryCard("building", arrivalTime, "会社到着", `予定 ${summary.officeTime}`)
+    summaryCard("building", record.departPressedTime, "出発"),
+    summaryCard("train", summary.startTime, summary.start),
+    summaryCard("train", summary.midTime, summary.mid),
+    summaryCard("frog", "乗換", summary.routeLabel),
+    summaryCard("train", transferTime, summary.from),
+    summaryCard("train", summary.toTime, summary.to),
+    summaryCard("building", arrivalTime, "会社到着")
   ].join("");
 
   document.getElementById("summaryDuration").textContent = duration === null ? "--分" : `${duration}分`;
+  document.getElementById("summaryRouteMetricLabel").textContent = summary.routeLabel.replace(/\s+/g, "");
   document.getElementById("summaryWait").textContent = wait === null ? "--分" : `${wait}分`;
-  document.getElementById("summaryChoice").textContent = summary.routeLabel;
 }
 
 function arriveOffice() {
@@ -491,7 +494,6 @@ function renderHistory() {
   list.innerHTML = records.map((record) => {
     const duration = durationMinutes(record.departPressedAt, record.arrivalPressedAt);
     const wait = waitMinutes(record);
-    const frog = record.selected && record.selected.kind === "route" ? "assets/frog_happy.png" : "assets/frog_sad.png";
     const label = record.dateLabel || formatDateLabel(new Date(record.departPressedAt || Date.now()));
     return `
       <button class="history-item" type="button" data-history-id="${record.id}">
@@ -499,7 +501,6 @@ function renderHistory() {
           <span class="history-date">${label}</span>
           <span class="history-meta">通勤${duration === null ? "--" : duration}分 ｜ 乗換${wait === null ? "--" : wait}分</span>
         </span>
-        <img class="history-frog" src="${frog}" alt="">
         <span class="history-arrow">›</span>
       </button>
     `;
